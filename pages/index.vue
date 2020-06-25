@@ -296,7 +296,19 @@ export default {
 
 
   mounted() {
-
+   
+ this.$axios.post("/v2/v1/get/myanmar_phone")
+            .then(response => {
+              console.log(response) 
+              this.phone = response.data.phone 
+                if(this.phone == '-') {
+                  this.dialogVisible = true
+                }else {
+                   this.dialogVisible = true
+                }  
+        })
+  
+  
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -402,7 +414,7 @@ export default {
           phone:'',
 
       },
-      phone:localStorage.getItem('userInfo'),
+      phone:'',
       visible: false
 
     }
@@ -580,7 +592,7 @@ export default {
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
     
   }else {
-    
+   
       // var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
@@ -600,6 +612,7 @@ export default {
                     
                     // })
                 }
+                this.isActive_even = false
                 this.info_api = response.data.data
               })
         //  }.bind(this), 3000)
