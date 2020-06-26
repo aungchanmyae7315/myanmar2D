@@ -620,7 +620,7 @@ export default {
                         this.dialogVisible = false
                       }  
             
-             }.bind(this), 60000)
+             }.bind(this), 120000)
   
       
       this.currentDate = moment().format("YYYY D MMMM  dddd")
