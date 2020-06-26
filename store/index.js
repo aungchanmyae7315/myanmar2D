@@ -43,7 +43,7 @@ const createStore = () => {
             logIn(state, userInfo) {
                 //console.log("UserInfo", userInfo);
                 // state.userInfo = userInfo;
-                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                localStorage.setItem('userInfo',userInfo);
                 state.isLoggedIn = true;
                 
             },

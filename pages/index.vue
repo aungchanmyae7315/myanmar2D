@@ -34,11 +34,10 @@
                   <span  class="avatar_text_logout">Please Login first</span>
                    
             </div>
-            <div v-else class="demo-type">
-                <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`">
+            <div v-else class="demo-type" @click="dialogVisible_Edit = true">
+
                  <el-avatar :size="60"><img src="~static/images/me_img.svg" alt=""></el-avatar>
                   <span  class="avatar_text_logout">{{this.phone}}</span>
-                </nuxt-link>
             </div>
 
 <el-dialog
@@ -63,6 +62,28 @@
   </el-form>
 
     <el-button class="login_btn" round type="text" @click="submitForm('ruleForm')">Login</el-button>
+</el-dialog>
+
+
+<el-dialog
+  :visible.sync="dialogVisible_Edit">
+  <div style="text-align:center">
+     <el-avatar :size="60"><img src="~static/images/me_img.svg" alt=""></el-avatar>
+  </div>
+  <p style="text-align:left;padding-top:10px;">Edit Phone Number</p>
+      <el-form  @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                <el-form-item 
+                  prop="phone"
+                :rules="[
+                    { required: true, message: 'Enter Phone Number' },
+                    
+                ]"
+                  class="edit_name" >
+                    <el-input  required type="text"  id="ok" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;"  placeholder="09XXX" prefix-icon="el-icon-phone" v-model="ruleForm.editPhone"  ></el-input>
+                </el-form-item>
+      </el-form>
+        <el-button type="info" round @click="profileUpdate('ruleForm')">Update</el-button>
+  
 </el-dialog>
 
         <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
@@ -297,16 +318,16 @@ export default {
 
   mounted() {
    
- this.$axios.post("/v2/v1/get/myanmar_phone")
-            .then(response => {
-              console.log(response) 
-              this.phone = response.data.phone 
-                if(this.phone == '-') {
-                  this.dialogVisible = true
-                }else {
-                   this.dialogVisible = true
-                }  
-        })
+//  this.$axios.post("/v2/v1/get/myanmar_phone")
+//             .then(response => {
+//               console.log(response) 
+//               this.phone = response.data.phone 
+//                 if(this.phone == '-') {
+//                   this.dialogVisible = true
+//                 }else {
+//                    this.dialogVisible = true
+//                 }  
+//         })
   
   
 
@@ -380,6 +401,7 @@ export default {
       fullscreenLoading: false,
       last_date:'',
       dialogVisible: false,
+      dialogVisible_Edit: false,
       isActive : true,
       isActive_morning: true,
        isActive_even:true,
@@ -412,9 +434,11 @@ export default {
       loaded:'',
        ruleForm: {
           phone:'',
+          editPhone:localStorage.getItem('userInfo'),
 
       },
-      phone:'',
+       phone:localStorage.getItem('userInfo'),
+     
       visible: false
 
     }
@@ -492,7 +516,6 @@ export default {
             this.breakTime = '4:30 PM'; 
              this.getDataresult();
           }else{
-            
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
@@ -541,9 +564,9 @@ export default {
                     .then(response => {
                       console.log(response)
                      
-                       this.userInfo = response.data
+                       this.userInfo = response.data.phone
                       this.$store.commit('logIn', this.userInfo)
-                       location.reload();
+                      location.reload();
                       this.dialogVisible = false
                       
              
@@ -553,7 +576,37 @@ export default {
             return false;
           }
          })
-      }
+      },
+         profileUpdate() {
+        //  this.$refs[formName].validate((valid) => {
+        //   if (valid) {
+        //     alert('ok')
+              var data_phone = {
+                    phone: $('#ok').val(),
+
+                  }
+                  console.log(data_phone)
+               this.$axios.post('/v2/v1/myanmar_phone', {
+                    phone: data_phone
+                   
+                    
+                })
+                    .then(response => {
+                      console.log(response)
+                     
+                       this.userInfo = response.data.phone.phone
+                      this.$store.commit('logIn', this.userInfo)
+                      //location.reload();
+                      this.dialogVisible = false
+                      
+             
+            //     })    
+            // } else {
+            //     console.log('error submit!!');
+            //     return false;
+            // }
+            })
+        }
      
     },
      created() {
@@ -564,18 +617,21 @@ export default {
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
     if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-
+         this.isActive_morning = true
     }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-   
+            this.isActive_morning = false
       var stop_Interval =  setInterval(function() {
         
        this.$axios.get('/v2/v1/twod-result/live')
+       
               .then(response => {
                   console.log(response)
                 if(response.data.data.status_1200 == "backend") {
+            
                        this.isActive = false
                        clearTimeout(stop_Interval);  
                 }else {
+
                        this.isActive = true
                       this.$axios.get('/v2/v1/twod-result/live')
                     .then(response => {
@@ -592,7 +648,6 @@ export default {
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
     
   }else {
-   
       // var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
@@ -601,9 +656,9 @@ export default {
                 if(response.data.data.status_430 == "backend") {
                         this.isActive_even = false
                          this.isActive = false
-
                 }else {
-                      this.isActive_morning = false
+
+                     
                        this.isActive = false
                     //   this.$axios.get('/v2/v1/twod-result/live')
                     // .then(response => {
