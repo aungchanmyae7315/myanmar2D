@@ -80,7 +80,7 @@ export default {
   credentials: false,
   //debug:true,
   //baseURL: "https://api.2dboss.com/api/",
-  baseURL: "https://backend.shwelamin.com/api/",
+  //baseURL: "https://backend.shwelamin.com/api/",
   baseURL: "https://build.seinchanthar.com/api/",
   proxy:false,
   proxyHeaders: false,
