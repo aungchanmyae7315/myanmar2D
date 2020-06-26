@@ -330,7 +330,7 @@ export default {
           }
           else{
             // setTimeout(function(){
-            self.$axios.get('/v2/v1/slider_image?name=home')
+            self.$axios.get('/v2/v1/myanmar_slider')
                 .then(response => {
                   
                 console.dir(response.data.data);
