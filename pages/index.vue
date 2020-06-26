@@ -612,16 +612,14 @@ export default {
     },
      created() {
           var stop_Interval =  setInterval(function() {
-              this.$axios.post("/v2/v1/get/myanmar_phone")
-                  .then(response => {
-                    console.log(response) 
-                    this.hasPhone = response.data.phone 
-                      if(this.hasPhone == '-') {
+              
+              this.hasPhone = localStorage.getItem('userInfo')
+                      if(!this.hasPhone) {
                         this.dialogVisible = true
                       }else {
-                        this.dialogVisible = true
+                        this.dialogVisible = false
                       }  
-              })
+            
              }.bind(this), 60000)
   
       
