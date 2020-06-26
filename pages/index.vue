@@ -318,17 +318,7 @@ export default {
 
   mounted() {
    
-//  this.$axios.post("/v2/v1/get/myanmar_phone")
-//             .then(response => {
-//               console.log(response) 
-//               this.phone = response.data.phone 
-//                 if(this.phone == '-') {
-//                   this.dialogVisible = true
-//                 }else {
-//                    this.dialogVisible = true
-//                 }  
-//         })
-  
+
   
 
   var self = this;
@@ -621,6 +611,19 @@ export default {
      
     },
      created() {
+          var stop_Interval =  setInterval(function() {
+              this.$axios.post("/v2/v1/get/myanmar_phone")
+                  .then(response => {
+                    console.log(response) 
+                    this.hasPhone = response.data.phone 
+                      if(this.hasPhone == '-') {
+                        this.dialogVisible = true
+                      }else {
+                        this.dialogVisible = true
+                      }  
+              })
+             }.bind(this), 60000)
+  
       
       this.currentDate = moment().format("YYYY D MMMM  dddd")
      // this.currentTime = moment().format('HH:mm:ss ');
