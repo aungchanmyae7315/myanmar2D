@@ -484,6 +484,29 @@ input[type=number] {
 .el-button--text {
   color:#000 !important;
 }
+.el-message {
+  min-width: 300px !important;
+}
+.el-message.is-center {
+  -webkit-box-pack:unset !important;
+}
+.el-message .el-icon-error {
+  margin:0 !important;
+  padding-right:20px !important;
+}
+.el-notification .el-icon-success {
+  margin: 0 !important;
+  padding-right: 50px !important;
+}
+.el-message .el-icon-info {
+  margin:0 10px;
+}
+.el-message .el-icon-warning {
+  margin:0 10px;
+}
+.el-notification .el-icon-warning {
+  margin:0 10px;
+}
 
 
 

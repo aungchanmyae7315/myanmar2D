@@ -525,20 +525,24 @@ export default {
        },
        ServerCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-           // this.isActive = false
+           this.isActive_morning = false
+            this.isActive_even = false
             this.breakTime = '12:01 PM';
            
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
+               this.isActive_morning = false
+                this.isActive_even = false
                
             this.breakTime = '4:30 PM'; 
             
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
-            
           }else{
-            
+           
+              this.isActive_morning = false
+              this.isActive_even = true
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
@@ -562,15 +566,18 @@ export default {
                     
                 })
                     .then(response => {
-                      console.log(response)
-                     
+               
                        this.userInfo = response.data.phone
                       this.$store.commit('logIn', this.userInfo)
                       location.reload();
                       this.dialogVisible = false
                       
              
-                })    
+                }) 
+                 .catch(error => {
+                    console.log(error.response)
+                });
+                   
           } else {
             console.log('error submit!!');
             return false;
@@ -578,34 +585,38 @@ export default {
          })
       },
          profileUpdate() {
-        //  this.$refs[formName].validate((valid) => {
-        //   if (valid) {
-        //     alert('ok')
               var data_phone = {
                     phone: $('#ok').val(),
 
                   }
-                  console.log(data_phone)
+                  var realPhone = parseInt(data_phone.phone)
+                
                this.$axios.post('/v2/v1/myanmar_phone', {
-                    phone: data_phone
-                   
-                    
+                    phone:'0'+realPhone
                 })
                     .then(response => {
-                      console.log(response)
+               
+                       this.userInfo = response.data.phone
+                       this.full_limit = response.data.data_full
+                       if(this.full_limit == 1) {
+                           this.$message({
+                            showClose: true,
+                           message: 'Full Limit 3 Times',
+                          type: 'warning',
+                        });
+                       }else {
+                           this.$store.commit('logIn', this.userInfo)
+                            location.reload();
+                       }
+                        this.dialogVisible = false
+                    
+                   
                      
-                       this.userInfo = response.data.phone.phone
-                      this.$store.commit('logIn', this.userInfo)
-                      //location.reload();
-                      this.dialogVisible = false
                       
-             
-            //     })    
-            // } else {
-            //     console.log('error submit!!');
-            //     return false;
-            // }
             })
+              .catch(error => {
+                    console.log(error.response)
+                });
         }
      
     },
@@ -617,15 +628,15 @@ export default {
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
     if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-         this.isActive_morning = true
+
     }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive_morning = false
+         
       var stop_Interval =  setInterval(function() {
         
        this.$axios.get('/v2/v1/twod-result/live')
        
               .then(response => {
-                  console.log(response)
+                
                 if(response.data.data.status_1200 == "backend") {
             
                        this.isActive = false
