@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 
 const _250e6cf8 = () => interopDefault(import('../pages/privacy.vue' /* webpackChunkName: "pages/privacy" */))
-const _68e18894 = () => interopDefault(import('../pages/profile_edit.vue' /* webpackChunkName: "pages/profile_edit" */))
 const _26bdb312 = () => interopDefault(import('../pages/threedResult.vue' /* webpackChunkName: "pages/threedResult" */))
 const _7651efee = () => interopDefault(import('../pages/twodResult.vue' /* webpackChunkName: "pages/twodResult" */))
 const _74d9a2ce = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -72,10 +71,6 @@ export function createRouter() {
       path: "/privacy",
       component: _250e6cf8,
       name: "privacy"
-    }, {
-      path: "/profile_edit",
-      component: _68e18894,
-      name: "profile_edit"
     }, {
       path: "/threedResult",
       component: _26bdb312,
