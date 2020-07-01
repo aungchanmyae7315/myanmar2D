@@ -507,6 +507,13 @@ input[type=number] {
 .el-notification .el-icon-warning {
   margin:0 10px;
 }
+.refresh_icon {
+  width:40px;
+  height: auto;
+  float: right;
+  position: relative;
+  bottom:61px;
+}
 
 
 

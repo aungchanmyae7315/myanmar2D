@@ -137,8 +137,8 @@ const setupProgress = (axios) => {
 export default (ctx, inject) => {
   // baseURL
   const baseURL = process.browser
-      ? 'https://build.seinchanthar.com/api/'
-      : (process.env._AXIOS_BASE_URL_ || 'https://build.seinchanthar.com/api/')
+      ? 'https://backend.shwelamin.com/api/'
+      : (process.env._AXIOS_BASE_URL_ || 'https://backend.shwelamin.com/api/')
 
   // Create fresh objects for all default header scopes
   // Axios creates only one which is shared across SSR requests!
