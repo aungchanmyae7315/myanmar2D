@@ -78,7 +78,6 @@ export default {
   */
  axios: {
   credentials: false,
-  
   // baseURL: "https://build.seinchanthar.com/api/",
   baseURL: "https://backend.shwelamin.com/api/",
 
