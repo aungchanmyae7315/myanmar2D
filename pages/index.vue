@@ -29,15 +29,21 @@
           </el-header>
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
-            <div v-if="!$store.state.isLoggedIn"  class="demo-type"  @click="dialogVisible = true">
+            <div v-if="!$store.state.isLoggedIn"  class="demo-type">
+              <div  @click="dialogVisible = true">
                   <el-avatar :size="60"><img src="~static/images/me_img.svg" alt=""></el-avatar>
                   <span  class="avatar_text_logout">Please Login first</span>
+              </div>  
+            
+                      <img @click="HomeRefresh"  v-loading.fullscreen.lock="fullscreenLoading" src="~static/images/dimond_t_icon.png" alt="" class="refresh_icon">
                    
             </div>
-            <div v-else class="demo-type" @click="dialogVisible_Edit = true">
-
+            <div v-else class="demo-type" >
+                <div @click="dialogVisible_Edit = true">
                  <el-avatar :size="60"><img src="~static/images/me_img.svg" alt=""></el-avatar>
                   <span  class="avatar_text_logout">{{this.phone}}</span>
+                </div>
+                    <img @click="HomeRefresh"  v-loading.fullscreen.lock="fullscreenLoading" src="~static/images/dimond_t_icon.png" alt="" class="refresh_icon">
             </div>
 
 <el-dialog
@@ -555,7 +561,7 @@ export default {
                     
                 })
                     .then(response => {
-               
+                      console.log(response)
                        this.userInfo = response.data.phone
                       this.$store.commit('logIn', this.userInfo)
                       location.reload();
