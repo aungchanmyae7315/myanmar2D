@@ -1,35 +1,4 @@
 /*!
-	 * jQuery JavaScript Library v3.3.1
-	 * https://jquery.com/
-	 *
-	 * Includes Sizzle.js
-	 * https://sizzlejs.com/
-	 *
-	 * Copyright JS Foundation and other contributors
-	 * Released under the MIT license
-	 * https://jquery.org/license
-	 *
-	 * Date: 2018-01-20T17:24Z
-	 */
-
-/*!
-	 * Sizzle CSS Selector Engine v2.3.3
-	 * https://sizzlejs.com/
-	 *
-	 * Copyright jQuery Foundation and other contributors
-	 * Released under the MIT license
-	 * http://jquery.org/license
-	 *
-	 * Date: 2016-08-08
-	 */
-
-/*!
- * vue-social-sharing v2.4.7 
- * (c) 2019 nicolasbeauvais
- * Released under the MIT License.
- */
-
-/*!
  * Vue.js v2.6.11
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
@@ -85,3 +54,28 @@
  * @internal
  * @license Modernizr 3.0.0pre (Custom Build) | MIT
  */
+
+/*!
+	 * jQuery JavaScript Library v3.3.1
+	 * https://jquery.com/
+	 *
+	 * Includes Sizzle.js
+	 * https://sizzlejs.com/
+	 *
+	 * Copyright JS Foundation and other contributors
+	 * Released under the MIT license
+	 * https://jquery.org/license
+	 *
+	 * Date: 2018-01-20T17:24Z
+	 */
+
+/*!
+	 * Sizzle CSS Selector Engine v2.3.3
+	 * https://sizzlejs.com/
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license
+	 * http://jquery.org/license
+	 *
+	 * Date: 2016-08-08
+	 */

@@ -6,7 +6,7 @@
           <el-header class="header">
             <el-row>
               <el-col :span="12" class="logo_text">
-                 <span> Myanmar 2D</span>
+                 <span> ShweLaMin 2D</span>
               </el-col>
               <el-col :span="12">
                 <ul class="main_header">
