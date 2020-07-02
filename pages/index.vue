@@ -352,7 +352,7 @@ export default {
                 })
                
             // }, 2000);
-              self.$axios.get('/v2/v1/slider_text')
+              self.$axios.get('/v2/v1/myanmar_slider_text')
                 .then(response => {
                 console.log(response)
               
@@ -362,11 +362,12 @@ export default {
                 }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
-     var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
-    if (m != null && isSeinluckyApp){
+    //  var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
+    // if (m != null && isSeinluckyApp){
       var deviceId = m[1];
       localStorage.setItem("deviceId", deviceId);
-    }
+    // }
+    console.log(  localStorage.setItem("deviceId", deviceId))
     //console.dir(this.$store.state.webAppVersion.length);
     if (this.$store.state.webAppVersion.length == 0){
       this.$axios.get(`/web-app-version`)
@@ -374,7 +375,11 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
+
+    
+
  
+
     
       this.getDataKwee();
       //this.getDataresult();
