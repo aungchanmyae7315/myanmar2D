@@ -362,6 +362,7 @@ export default {
                 }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
+  console.log(m)
     //  var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     // if (m != null && isSeinluckyApp){
       var deviceId = m[1];

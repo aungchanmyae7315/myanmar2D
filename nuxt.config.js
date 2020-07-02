@@ -45,7 +45,7 @@ export default {
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: `${dir}/favicon.ico` },
        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-       { rel: 'apple-touch-icon', href: '/apple-touch-icon.jpg' },
+       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi'},
       { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=myanmar3' },
       { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
