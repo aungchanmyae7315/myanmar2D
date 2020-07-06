@@ -338,9 +338,7 @@ export default {
             self.$axios.get('/v2/v1/myanmar_slider')
                 .then(response => {
                   
-                console.dir(response.data.data);
-                console.log('hello')
-                 
+              
                  if(self.slider_images  !== null) {
                         this.loaded = true;
                     }
@@ -353,15 +351,14 @@ export default {
             // }, 2000);
               self.$axios.get('/v2/v1/myanmar_slider_text')
                 .then(response => {
-                console.log(response)
-              
+           
                 self.slider_text = response.data.data[0];
                 })
 
                 }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
-  console.log(m)
+
     //  var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     // if (m != null && isSeinluckyApp){
       var deviceId = m[1];
@@ -481,8 +478,7 @@ export default {
             .then(response => {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
-              console.log(response)
-              alert('ok')
+             
 
             })
      },
@@ -535,12 +531,12 @@ export default {
             this.breakTime = '12:01 PM';
           
           } else if(this.currentTime > this.time_04_30){
-            console.log(this.close_day)
+           
              if(this.close_day == 1) {
            
                this.isActive = false
             }else {
-              console.log('eee')
+             
                this.isActive = true
             }
             
@@ -585,7 +581,7 @@ export default {
                     
                 })
                     .then(response => {
-                      console.log(response)
+                     
                        this.userInfo = response.data.phone
                       this.$store.commit('logIn', this.userInfo)
                       location.reload();
@@ -678,7 +674,7 @@ export default {
       // var ok =  setInterval(function() {
        this.$axios.get('/luke/twod-result-live')
               .then(response => {
-                console.log(response)
+               
                 this.last_date = response.data.data.last_date
                 this.close_day = response.data.data.is_close_day
                 this.isActive_even = false
