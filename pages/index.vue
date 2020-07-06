@@ -141,9 +141,9 @@
                       <span v-else> <i class="el-icon-check"></i> </span>
                     
                       <span>Updated:</span>
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="serverDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="serverDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="serverDate"></span>
+                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="this.last_date"></span>
+                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="this.last_date"></span>
+                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="this.last_date"></span>
                       <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
                       <span v-else v-text="this.last_date"></span>
                       <span v-text="this.breakTime"></span>
@@ -385,7 +385,7 @@ export default {
       this.getDataKwee();
       //this.getDataresult();
       this.updateIsLoggedIn();
-      this.updateLang();
+      // this.updateLang();
       this.getKweeLiveData();
        
 
@@ -401,6 +401,7 @@ export default {
     return {
       fullscreenLoading: false,
       last_date:'',
+      close_day:'',
       dialogVisible: false,
       dialogVisible_Edit: false,
       isActive : true,
@@ -477,10 +478,13 @@ export default {
 
      //luke
         async getKweeLiveData(){
-          this.$axios.get('/luke/kwee_live')
+          this.$axios.get('/luke/twod-result-live')
             .then(response => {
-              this.info = response.data[0];
-	      //console.dir(this.info);
+              this.info = response.data.data;
+              this.close_day = response.data.data.is_close_day
+              console.log(response)
+              alert('ok')
+
             })
      },
 
@@ -493,15 +497,14 @@ export default {
            this.itvKweeLiveData();
           },
           async getDataresult() {
-            this.$axios.get('/v2/v1/twod-result/live')
+            
+            this.$axios.get('/luke/twod-result-live')
               .then(response => {
-                console.dir("twod-result/live");
-                console.dir(response);
+                 alert('oksdfdsf')
                 this.info_api = response.data.data
                
               })
           },
-        
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -514,9 +517,11 @@ export default {
              this.getDataKwee();
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
+  
             this.breakTime = '4:30 PM'; 
              this.getDataresult();
           }else{
+           
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
@@ -529,9 +534,17 @@ export default {
            this.isActive_morning = false
             this.isActive_even = false
             this.breakTime = '12:01 PM';
-           
+          
           } else if(this.currentTime > this.time_04_30){
-            // this.isActive = false
+            console.log(this.close_day)
+             if(this.close_day == 1) {
+           
+               this.isActive = false
+            }else {
+              console.log('eee')
+               this.isActive = true
+            }
+            
                this.isActive_morning = false
                 this.isActive_even = false
                
@@ -544,7 +557,13 @@ export default {
            
               this.isActive_morning = false
               this.isActive_even = true
-             this.isActive = true
+              if(this.close_day == 1) {
+              
+                this.isActive = false
+              }else {
+                  
+                this.isActive = true
+              }
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
@@ -645,25 +664,11 @@ export default {
          
       var stop_Interval =  setInterval(function() {
         
-       this.$axios.get('/v2/v1/twod-result/live')
+       this.$axios.get('/luke/twod-result-live')
        
               .then(response => {
                 
-                if(response.data.data.status_1200 == "backend") {
-            
-                       this.isActive = false
-                       clearTimeout(stop_Interval);  
-                }else {
-
-                       this.isActive = true
-                      this.$axios.get('/v2/v1/twod-result/live')
-                    .then(response => {
-                      
-                     
-                      this.info_api = response.data.data
-                    
-                    })
-                }
+                
                 this.info_api = response.data.data
               })
          }.bind(this), 3000)
@@ -672,24 +677,11 @@ export default {
     
   }else {
       // var ok =  setInterval(function() {
-       this.$axios.get('/v2/v1/twod-result/live')
+       this.$axios.get('/luke/twod-result-live')
               .then(response => {
                 console.log(response)
-                  this.last_date = response.data.data.last_date
-                if(response.data.data.status_430 == "backend") {
-                        this.isActive_even = false
-                         this.isActive = false
-                }else {
-
-                     
-                       this.isActive = false
-                    //   this.$axios.get('/v2/v1/twod-result/live')
-                    // .then(response => {
-                    //    this.last_date = response.data.data.last_date
-                    //   this.info_api = response.data.data
-                    
-                    // })
-                }
+                this.last_date = response.data.data.last_date
+                this.close_day = response.data.data.is_close_day
                 this.isActive_even = false
                 this.info_api = response.data.data
               })
@@ -719,7 +711,6 @@ export default {
                       }
                 })
       }
-     
         this.$axios.get('/v2/v1/server_time')
               .then(response => {
                this.currentTime = response.data.time
@@ -728,7 +719,6 @@ export default {
             
     },
 }
-
 
 </script>
 
