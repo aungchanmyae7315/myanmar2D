@@ -111,7 +111,7 @@
           </div>
         </h3>
             <div class="number" style="margin-top:-43px">
-               <h2 v-if="!this.info.live && !this.info_api.result_1200"    > 
+               <h2 v-if="!this.info.live "    > 
               
                         <div class="loading_spinner_main_number">
                             <div class="ldio-ct1tsjzqdg5">
@@ -124,10 +124,10 @@
                 <h2 class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
                    
                   <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
-                  <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
+                  <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
                   <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
                   <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
-                  <span v-else>{{this.info_api.live}}</span>
+                  <span v-else>{{this.info.live}}</span>
               </h2>
                       
                 </div>
@@ -159,7 +159,7 @@
                   
                   <div class="col">
                       <span>Set</span>
-                       <h4  v-if="!this.info.set_1200 && !this.info_api.set_1200"    class="card_loading">
+                       <h4  v-if="!this.info.set_1200"    class="card_loading">
                         <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
@@ -168,17 +168,17 @@
                             </div>
                         </div>
                       </h4>
-                      <h4 v-else  class="static" v-bind:class="{ live_number: isActive_morning, 'text-danger': hasError }"> 
+                      <h4 v-else  class="static" > 
                           <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else>{{this.info_api.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_1200}}</h4>
+                          <h4 v-else>{{this.info.set_1200}}</h4>
                       </h4>
                   </div>
                   <div class="col">
                       <span>Value</span>
-                       <h4  v-if="!this.info.val_1200 && !this.info_api.val_1200"    class="card_loading">
+                       <h4  v-if="!this.info.val_1200 && !this.info.val_1200"    class="card_loading">
                         <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
@@ -187,19 +187,19 @@
                             </div>
                         </div>
                       </h4>
-                      <h4  v-else  class="static" v-bind:class="{ live_number: isActive_morning, 'text-danger': hasError }"> 
+                      <h4  v-else  class="static" > 
                         <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else>{{this.info_api.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_1200}}</h4>
+                          <h4 v-else>{{this.info.val_1200}}</h4>
                       </h4>
                   </div>
                   <div class="col">
                       <span>2D</span>
                      <h4 class="static" style="font-weight:bold;color:#FFEB3C;font-size:17pt;">
                          
-                          {{this.info_api.result_1200}}
+                          {{this.info.result_1200}}
                       </h4>
                   </div>
                 </div>
@@ -213,7 +213,7 @@
                       
                       <div class="col">
                           <span>Set</span>
-                          <h4  v-if="!this.info.set_430 && !this.info_api.set_430"    class="card_loading">
+                          <h4  v-if="!this.info.set_430"    class="card_loading">
                             <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
@@ -222,17 +222,17 @@
                                 </div>
                             </div>
                           </h4>
-                          <h4 v-else   class="static" v-bind:class="{ live_number: isActive_even, 'text-danger': hasError }"> 
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else   class="static" > 
+                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_430}}</h4>
+                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_430}}</h4>
                             <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                            <h4 v-else>{{this.info_api.set_430}}</h4>
+                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_430}}</h4>
+                            <h4 v-else>{{this.info.set_430}}</h4>
                           </h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                           <h4   v-if="!this.info.val_430 && !this.info_api.val_430"    class="card_loading">
+                           <h4   v-if="!this.info.val_430 "    class="card_loading">
                             <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
@@ -241,12 +241,12 @@
                                 </div>
                             </div>
                           </h4>
-                          <h4  v-else   class="static" v-bind:class="{ live_number: isActive_even, 'text-danger': hasError }">
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
+                          <h4  v-else   class="static" >
+                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_430}}</h4>
+                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_430}}</h4>
                             <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
-                            <h4 v-else>{{this.info_api.val_430}}</h4>
+                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_430}}</h4>
+                            <h4 v-else>{{this.info.val_430}}</h4>
                           </h4>
                         
                       </div>
@@ -254,7 +254,7 @@
                           <span>2D</span>
                           <h4 class="static" style="font-weight:bold;color:#FFEB3C;font-size:17pt">
                        
-                          {{this.info_api.result_430}}
+                          {{this.info.result_430}}
                       </h4>
                           <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
                       </div>
@@ -272,11 +272,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info_api.modern_930}}</h4>
+                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info.modern_930}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info_api.internet_930}}</h4>
+                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info.internet_930}}</h4>
                       </div>
                     </div>
                 </div>
@@ -291,11 +291,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info_api.modern_200}}</h4>
+                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info.modern_200}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info_api.internet_200}}</h4>
+                          <h4 style="font-weight:bold;color:#FFEB3C;font-size:17pt">{{this.info.internet_200}}</h4>
                       </div>
                     </div>
                 </div>
@@ -324,41 +324,55 @@ export default {
   mounted() {
    
 
-  
+      this.$axios.get('/luke/twod-result-live')
+            .then(response => {
+              this.info = response.data.data;
+              this.close_day = response.data.data.is_close_day
+               this.last_date = response.data.data.last_date
+              console.log(response)
 
-  var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-             if(this.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-          }
-          else{
+            })
+ 
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('slider_time')
+        var diff = nowTimestamp - lastTimestamp;
+        var self = this;
+          
+        if (diff < 7200 ) {
+        
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
+            if (this.slider_images !== null) {
+                this.loaded = true;
+            }
+        } else {
             // setTimeout(function(){
-            self.$axios.get('/v2/v1/myanmar_slider')
+            self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
-                  
-                console.dir(response.data.data);
-                console.log('hello')
-                 
-                 if(self.slider_images  !== null) {
+                    if (self.slider_images !== null) {
                         this.loaded = true;
                     }
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                      self.$store.commit('setSliderImage', this.slider_images);
 
-                self.slider_images = response.data.data
-               
-                // self.$store.commit('setSliderImage', response.data.data);
+                       this.slider_time = Math.round(new Date().getTime()/1000);
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
+        }
+          if(diff < 7200) {
                
-            // }, 2000);
-              self.$axios.get('/v2/v1/myanmar_slider_text')
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-                console.log(response)
-              
-                self.slider_text = response.data.data[0];
+                    self.slider_text = response.data.data[0];
+                    self.$store.commit('setSliderText', this.slider_text);
+                     
                 })
+            }
 
-                }
+  
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
   console.log(m)
@@ -381,11 +395,9 @@ export default {
  
 
     
-      this.getDataKwee();
+       this.itvKweeLiveData();
       //this.getDataresult();
       this.updateIsLoggedIn();
-      // this.updateLang();
-      this.getKweeLiveData();
        
 
       let lang = localStorage.getItem('locale');
@@ -404,8 +416,6 @@ export default {
       dialogVisible: false,
       dialogVisible_Edit: false,
       isActive : true,
-      isActive_morning: true,
-       isActive_even:true,
       hasError: false,
       currentTime: '',
       serverDate:'',
@@ -422,7 +432,7 @@ export default {
       activeIndex: '1',
       
       info:'',
-      info_api:'',
+
       kwee_cma:'',
       set_1200:'',
       profile:'',
@@ -477,12 +487,12 @@ export default {
 
      //luke
         async getKweeLiveData(){
-          this.$axios.get('/luke/twod-result-live')
+            this.$axios.get('/luke/twod-result-live')
             .then(response => {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
-              console.log(response)
-              alert('ok')
+               this.last_date = response.data.data.last_date
+              
 
             })
      },
@@ -492,77 +502,79 @@ export default {
             this.getKweeLiveData();
           }.bind(this), 3000)
      },
-         async getDataKwee() {
-           this.itvKweeLiveData();
-          },
-          async getDataresult() {
+        //  async getDataKwee() {
+        //    this.itvKweeLiveData();
+        //   },
+        //   async getDataresult() {
             
-            this.$axios.get('/luke/twod-result-live')
-              .then(response => {
-                 alert('oksdfdsf')
-                this.info_api = response.data.data
+        //     this.$axios.get('/luke/twod-result-live')
+        //       .then(response => {
+        //          alert('oksdfdsf')
+        //         this.info_api = response.data.data
                
-              })
-          },
-       updateCurrentTime() {
-         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive = false
-            this.breakTime = '12:01 PM';
+        //       })
+        //   },
+      //  updateCurrentTime() {
+      //    if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+      //       this.isActive = false
+      //       this.breakTime = '12:01 PM';
            
-             this.getDataresult();
-          } else if(this.currentTime > this.time_04_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM'; 
-             this.getDataKwee();
-          }else if(this.currentTime < this.morningTime_9_30){
-            this.isActive = false
+      //        this.getDataresult();
+      //     } else if(this.currentTime > this.time_04_30){
+      //       this.isActive = false
+      //       this.breakTime = '4:30 PM'; 
+      //        this.getDataKwee();
+      //     }else if(this.currentTime < this.morningTime_9_30){
+      //       this.isActive = false
   
-            this.breakTime = '4:30 PM'; 
-             this.getDataresult();
-          }else{
+      //       this.breakTime = '4:30 PM'; 
+      //        this.getDataresult();
+      //     }else{
            
-             this.isActive = true
-            this.breakTime = moment().format('h:mm A');
-          }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
+      //        this.isActive = true
+      //       this.breakTime = moment().format('h:mm A');
+      //     }
+      // // this.currentTime = moment().format('HH:mm:ss');
+      //  this.currentDate = moment().format("YYYY D MMMM  dddd")
         
-       },
+      //  },
        ServerCurrentTime() {
+        //  console.log('ok')
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-           this.isActive_morning = false
-            this.isActive_even = false
-            this.breakTime = '12:01 PM';
+           this.isActive = false
           
-          } else if(this.currentTime > this.time_04_30){
-            console.log(this.close_day)
-             if(this.close_day == 1) {
+            this.breakTime = '12:01 PM';
            
+          } else if(this.currentTime > this.time_04_30){
+            // this.isActive = false
+            //alert('lll')
+             if(this.close_day == 1) {
+            
                this.isActive = false
             }else {
-              console.log('eee')
+                
                this.isActive = true
             }
-            
-               this.isActive_morning = false
-                this.isActive_even = false
-               
+            this.isActive = false
             this.breakTime = '4:30 PM'; 
             
           }else if(this.currentTime < this.morningTime_9_30){
+         
             this.isActive = false
             this.breakTime = '4:30 PM'; 
+            
           }else{
-           
-              this.isActive_morning = false
-              this.isActive_even = true
-              if(this.close_day == 1) {
-              
-                this.isActive = false
-              }else {
-                  
-                this.isActive = true
-              }
+            
+            if(this.close_day == 1) {
+            
+               this.isActive = false
+            }else {
+                
+               this.isActive = true
+            }
+          
+            this.isActive = true
+            
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
@@ -654,35 +666,7 @@ export default {
        this.breakTime = moment().format('h:mm:ss a')
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
-    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-
-    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-         
-      var stop_Interval =  setInterval(function() {
-        
-       this.$axios.get('/luke/twod-result-live')
-       
-              .then(response => {
-                
-                
-                this.info_api = response.data.data
-              })
-         }.bind(this), 3000)
-  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
     
-  }else {
-      // var ok =  setInterval(function() {
-       this.$axios.get('/luke/twod-result-live')
-              .then(response => {
-                console.log(response)
-                this.last_date = response.data.data.last_date
-                this.close_day = response.data.data.is_close_day
-                this.isActive_even = false
-                this.info_api = response.data.data
-              })
-        //  }.bind(this), 3000)
-  }
         
               
          let token = localStorage.getItem('token');
@@ -707,7 +691,7 @@ export default {
                       }
                 })
       }
-        this.$axios.get('/v2/v1/server_time')
+        this.$axios.get('http://luke.2dboss.com/api/luke/server-time')
               .then(response => {
                this.currentTime = response.data.time
                this.serverDate  = response.data.date

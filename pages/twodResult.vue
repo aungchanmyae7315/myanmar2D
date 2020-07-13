@@ -177,9 +177,7 @@ export default {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
       })
-        console.log('lee')
-        console.log(this.value2)
-        console.log('pal')
+       
     },
     data() {
         

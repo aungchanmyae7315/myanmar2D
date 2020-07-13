@@ -11,7 +11,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_axios_d61747a0 from 'nuxt_plugin_axios_d61747a0' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_axios_adc261e0 from 'nuxt_plugin_axios_adc261e0' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_elementui_d905880e from 'nuxt_plugin_elementui_d905880e' // Source: ../plugins/element-ui (mode: 'all')
 import nuxt_plugin_axios_2228ef02 from 'nuxt_plugin_axios_2228ef02' // Source: ../plugins/axios (mode: 'all')
 import nuxt_plugin_aos_caeae0de from 'nuxt_plugin_aos_caeae0de' // Source: ../plugins/aos (mode: 'all')
@@ -150,7 +150,7 @@ async function createApp(ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_axios_d61747a0 === 'function') await nuxt_plugin_axios_d61747a0(app.context, inject)
+  if (typeof nuxt_plugin_axios_adc261e0 === 'function') await nuxt_plugin_axios_adc261e0(app.context, inject)
   if (typeof nuxt_plugin_elementui_d905880e === 'function') await nuxt_plugin_elementui_d905880e(app.context, inject)
   if (typeof nuxt_plugin_axios_2228ef02 === 'function') await nuxt_plugin_axios_2228ef02(app.context, inject)
   if (typeof nuxt_plugin_aos_caeae0de === 'function') await nuxt_plugin_aos_caeae0de(app.context, inject)

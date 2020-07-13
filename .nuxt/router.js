@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _35aaa864 = () => interopDefault(import('../pages/privacy.vue' /* webpackChunkName: "pages/privacy" */))
-const _6d279397 = () => interopDefault(import('../pages/threedResult.vue' /* webpackChunkName: "pages/threedResult" */))
-const _28563d29 = () => interopDefault(import('../pages/twodResult.vue' /* webpackChunkName: "pages/twodResult" */))
-const _03b5b9ae = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _250e6cf8 = () => interopDefault(import('../pages/privacy.vue' /* webpackChunkName: "pages/privacy" */))
+const _26bdb312 = () => interopDefault(import('../pages/threedResult.vue' /* webpackChunkName: "pages/threedResult" */))
+const _7651efee = () => interopDefault(import('../pages/twodResult.vue' /* webpackChunkName: "pages/twodResult" */))
+const _74d9a2ce = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -69,19 +69,19 @@ export function createRouter() {
 
     routes: [{
       path: "/privacy",
-      component: _35aaa864,
+      component: _250e6cf8,
       name: "privacy"
     }, {
       path: "/threedResult",
-      component: _6d279397,
+      component: _26bdb312,
       name: "threedResult"
     }, {
       path: "/twodResult",
-      component: _28563d29,
+      component: _7651efee,
       name: "twodResult"
     }, {
       path: "/",
-      component: _03b5b9ae,
+      component: _74d9a2ce,
       name: "index"
     }],
 
