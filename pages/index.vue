@@ -691,7 +691,7 @@ export default {
                       }
                 })
       }
-        this.$axios.get('http://luke.2dboss.com/api/luke/server-time')
+        this.$axios.get('v2/v1/server_time')
               .then(response => {
                this.currentTime = response.data.time
                this.serverDate  = response.data.date
